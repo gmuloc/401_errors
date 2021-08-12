@@ -1,0 +1,33 @@
+---
+#
+# inventory_httpapi.yml
+#
+#  export ANSIBLE_INVENTORY=/workspaces/401_errors/playbooks/files/inventory_httpapi.yml
+#
+#  To list the HTTPAPI plugins `ansible-doc -t httpapi -l`
+#
+#  https://docs.ansible.com/ansible/latest/network/user_guide/platform_nxos.html
+#  
+#  https://docs.ansible.com/ansible/latest/collections/ansible/netcommon/httpapi_connection.html
+#
+all:
+  children:
+    sbx_n9kv:
+      hosts:
+        chip-nexus-tr.sandbox.wwtatc.local: {}
+
+      vars:
+        ansible_connection: ansible.netcommon.httpapi
+        ansible_httpapi_use_ssl: yes
+        ansible_httpapi_validate_certs: no
+        ansible_network_os: cisco.nxos.nxos
+        ansible_user: service-account
+        ansible_password: !vault |
+            $ANSIBLE_VAULT;1.1;AES256
+            36643762333832396335353066643162646566653265656637396265666364356535396262386165
+            3732623462363531613762373136663831313436373563320a376564373661343964333331666339
+            34333331646232306636666538376261343932346230626461613938383162653866343162616232
+            3933663161623336660a623836363365613863353933616631356464623836356265326435356262
+            3534
+
+        ansible_python_interpreter: /opt/ansible210/bin/python

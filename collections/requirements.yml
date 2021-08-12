@@ -1,0 +1,10 @@
+---
+#
+#  Ansible Tower looks in collections/requirements.yml for collections to install
+#
+collections:
+    #
+    # Install collection(s) from Ansible Galaxy.
+    #
+  - name: cisco.nxos
+    source: https://galaxy.ansible.com

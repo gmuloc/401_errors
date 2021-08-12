@@ -1,0 +1,61 @@
+#
+#  custom configuration file adding warn_list
+#
+warn_list:  # or 'skip_list' to silence them completely
+  - internal-error  # Unexpected internal error
+  - yaml
+
+command-shell:  # Specific to use of command and shell modules
+  - command-instead-of-module
+  - command-instead-of-shell
+  - deprecated-command-syntax
+  - inline-env-var
+  - no-changed-when
+  - risky-shell-pipe
+core:  # Related to internal implementation of the linter
+  - internal-error
+  - load-failure
+  - parser-error
+  - syntax-check
+deprecations:  # Indicate use of features that are removed from Ansible
+  - deprecated-bare-vars
+  - deprecated-command-syntax
+  - deprecated-local-action
+  - deprecated-module
+  - no-jinja-when
+  - role-name
+experimental:  # Newly introduced rules, by default triggering only warnings
+  - risky-file-permissions
+formatting:  # Related to code-style
+  - no-jinja-nesting
+  - no-tabs
+  - playbook-extension
+  - risky-octal
+  - var-spacing
+  - yaml
+idempotency:  # Possible indication that consequent runs would produce different results
+  - git-latest
+  - hg-latest
+  - no-changed-when
+  - package-latest
+idiom:  # Anti-pattern detected, likely to cause undesired behavior
+  - command-instead-of-module
+  - command-instead-of-shell
+  - empty-string-compare
+  - inline-env-var
+  - literal-compare
+  - missing-import
+  - no-handler
+  - no-loop-var-prefix
+  - no-relative-paths
+  - unnamed-task
+metadata:  # Invalid metadata, likely related to galaxy, collections or roles
+  - meta-incorrect
+  - meta-no-info
+  - meta-no-tags
+  - meta-video-links
+unpredictability:
+  - partial-become
+  - risky-file-permissions
+yaml:  # External linter which will also produce its own rule codes.
+  - yaml

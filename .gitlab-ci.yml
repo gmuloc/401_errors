@@ -1,0 +1,46 @@
+#
+#      Copyright (c) 2021 World Wide Technology
+#      All rights reserved.
+#
+#      author: joel.king@wwt.com GitHub/GitLab @joelwking
+#
+#      references:
+#          https://gitlab.com/gitlab-org/gitlab/-/issues/37470
+#          https://about.gitlab.com/blog/2019/07/01/using-ansible-and-gitlab-as-infrastructure-for-code/
+#
+#      note: additional packages can be installed by adding them to the 'script' commands, e.g.
+#            # - pip3 install ansible-lint
+#
+#            if you need to specify a configuration file use: -c .ansible-lint
+#
+image: joelwking/ansible:1.2
+
+stages:
+  - lint
+  - secondary
+  - tertiary
+
+ansible_linting:
+  variables:
+    GIT_SSL_NO_VERIFY: "True"
+  stage: lint
+  script:
+    - pip3 install yamllint
+    - ansible --version
+    - ansible-galaxy collection install cisco.nxos
+    - ansible-lint --version
+    - ansible-lint -c .ansible-lint playbooks/configure_device_interfaces.yml
+
+step_two:
+  variables:
+    GIT_SSL_NO_VERIFY: "False"
+  stage: secondary
+  script:
+    - echo "$GIT_SSL_NO_VERIFY"
+
+step_three:
+  variables:
+    GIT_SSL_NO_VERIFY: "True"
+  stage: tertiary
+  script:
+    - whoami

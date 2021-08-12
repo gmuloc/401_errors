@@ -1,0 +1,15 @@
+# -----------------------------------------------------------
+# Core development packages
+pyyaml
+ansible<3
+# -----------------------------------------------------------
+#
+# For Ansible and YAML file linting (used in CI/CD demo)
+#
+yamllint
+ansible-lint
+# -----------------------------------------------------------
+#
+# For ansible_connection: ansible.netcommon.network_cli
+#
+paramiko

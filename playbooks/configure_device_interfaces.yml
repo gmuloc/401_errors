@@ -1,0 +1,79 @@
+#!/usr/bin/env ansible-playbook
+---
+#
+#      Copyright (c) 2021 World Wide Technology
+#      All rights reserved.
+#
+#      author: Joel W. King, @joelwking
+#
+#      description: Test comparing httpapi vs network_cli connection methods
+#
+#      usage:  
+#
+#        ./configure_device_interfaces.yml  -i files/inventory_network_cli.yml --ask-vault-password
+#
+- name: configure device interfaces 
+  connection: local
+  hosts: sbx_n9kv
+  gather_facts: false
+
+  vars: 
+    state: present
+    first_interface: 63
+    last_interface: 64
+
+    nxos:
+      mtu: 9216
+      enabled: {'present': 'yes', 'absent': 'no'}
+      l2:
+        ethernet: 'Ethernet1/'
+        description: ACCESS
+        vlan: 22
+      l3:
+        interfaces:
+          - name: 'Ethernet1/60'
+            description: UPLINK
+            address: 192.0.2.1/31
+
+  tasks:
+    - name: Layer 2
+      block:
+        - name: Configure Layer 2 interfaces
+          cisco.nxos.nxos_interfaces:
+            config:
+              - name: '{{ nxos.l2.ethernet }}{{ item }}'
+                description: '{{ nxos.l2.description }}'
+                enabled: '{{ nxos.enabled[state] }}'
+                mode: layer2
+                mtu: '{{ nxos.mtu }}'
+          with_sequence: start='{{ first_interface }}' end='{{ last_interface }}'
+
+        - name: Configure Layer 2 interfaces
+          cisco.nxos.nxos_l2_interfaces:
+            config:
+              - name: '{{ nxos.l2.ethernet }}{{ item }}'
+                access:
+                  vlan: '{{ nxos.l2.vlan }}'
+          with_sequence: start='{{ first_interface }}' end='{{ last_interface }}'
+      tags: ['l2_interface']
+
+    - name: Layer 3
+      block: 
+        - name: Configure interface as Layer 3
+          cisco.nxos.nxos_interfaces:
+            config:
+              - name: '{{ item.name }}'
+                description: '{{ item.description }}'
+                enabled: '{{ nxos.enabled[state] }}'
+                mode: layer3
+                mtu: '{{ nxos.mtu }}'
+          loop: '{{ nxos.l3.interfaces }}'
+
+        - name: Specify IP address for interface
+          cisco.nxos.nxos_l3_interfaces:
+            config:
+              - name: '{{ item.name }}'
+                ipv4:
+                - address: '{{ item.address }}'
+          loop: '{{ nxos.l3.interfaces }}'
+      tags: ['l3_interface']  
