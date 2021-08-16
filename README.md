@@ -2,6 +2,7 @@
 
 Project to report 401 errors and demonstrate GitLab CI
 
+ISSUE: https://github.com/ansible/ansible/issues/75503
 
 It has been observed that using Ansible Vault encrypted strings are not properly handled by `ansible.netcommon.httpapi` resulting in `ansible.module_utils.connection.ConnectionError: HTTP Error 401: Unauthorized`.
 
