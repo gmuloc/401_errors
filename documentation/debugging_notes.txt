@@ -1,0 +1,11 @@
+
+
+[Yesterday 6:23 PM] Hull, Tim
+I did some experimenting on the ATC switch and I think I isolated the cause of the problem.  I used Wireshark to look at the HTTP header for the NX-API authentication from Ansible to the Nexus and the authorization header includes the still-encrypted ansible vault string.  Ansible should send the decrypted password but it doesn't.  If I don't use ansible-vault, and just hard-code a password, the playbook runs successfully, and I see the correct password displayed in the HTTP header
+
+For some reason, this nxos_config module does not decrypt the ansible vault password when using httpapi .  However, the nxos_telemetry module decrypts the ansible vault password just fine, and the HTTP header looks good.
+​[Yesterday 6:26 PM] Hull, Tim
+I won't have any trouble duplicating the issue, if it's something you want to look at with me.  I didn't go on a source code hunt to figure out what the problem is.
+
+
+Thanks for this debugging info. In my notes I had written the offending module was nxos_interfaces. (You may encounter '401' errors using ansible.netcommon.httpapi with cisco.nxos.nxos_interfaces) which was why I set up using that as my test case. Will look at it more today.

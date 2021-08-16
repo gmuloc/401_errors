@@ -1,0 +1,376 @@
+root@078cb3a0ef9c:/workspaces/sot/playbooks# ansible-playbook configure_device.yml -i files/inventory_net_cli.yml --ask-vault-password -vvvv
+ansible-playbook 2.10.12
+  config file = None
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /opt/ansible210/lib/python3.8/site-packages/ansible
+  executable location = /opt/ansible210/bin/ansible-playbook
+  python version = 3.8.10 (default, Jun 23 2021, 15:28:49) [GCC 8.3.0]
+No config file found; using defaults
+Vault password: 
+setting up inventory plugins
+host_list declined parsing /workspaces/sot/playbooks/files/inventory_net_cli.yml as it did not pass its verify_file() method
+Parsed /workspaces/sot/playbooks/files/inventory_net_cli.yml inventory source with yaml plugin
+Loading collection cisco.nxos from /root/.ansible/collections/ansible_collections/cisco/nxos
+redirecting (type: action) cisco.nxos.nxos_config to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_feature to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_config to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_system to cisco.nxos.nxos
+Loading callback plugin default of type stdout, v2.0 from /opt/ansible210/lib/python3.8/site-packages/ansible/plugins/callback/default.py
+Skipping callback 'default', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+
+PLAYBOOK: configure_device.yml **********************************************************************************************
+Positional arguments: configure_device.yml
+verbosity: 4
+connection: smart
+timeout: 10
+become_method: sudo
+tags: ('all',)
+inventory: ('/workspaces/sot/playbooks/files/inventory_net_cli.yml',)
+ask_vault_pass: True
+forks: 5
+1 plays in configure_device.yml
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+
+PLAY [Configure general device features] ************************************************************************************
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+META: ran handlers
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+
+TASK [Display the Inventory Hostname] ***************************************************************************************
+task path: /workspaces/sot/playbooks/configure_device.yml:32
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+Loading collection ansible.netcommon from /root/.ansible/collections/ansible_collections/ansible/netcommon
+redirecting (type: become) ansible.builtin.enable to ansible.netcommon.enable
+<sandbox-nxos-1.cisco.com> attempting to start connection
+<sandbox-nxos-1.cisco.com> using connection plugin ansible.netcommon.network_cli
+Found ansible-connection at path /opt/ansible210/bin/ansible-connection
+<sandbox-nxos-1.cisco.com> local domain socket does not exist, starting it
+<sandbox-nxos-1.cisco.com> control socket path is /root/.ansible/pc/a6c896fd54
+<sandbox-nxos-1.cisco.com> Loading collection ansible.netcommon from /root/.ansible/collections/ansible_collections/ansible/netcommon
+<sandbox-nxos-1.cisco.com> Loading collection cisco.nxos from /root/.ansible/collections/ansible_collections/cisco/nxos
+<sandbox-nxos-1.cisco.com> Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f1373535610> for vault_id=default
+<sandbox-nxos-1.cisco.com> local domain socket listeners started successfully
+<sandbox-nxos-1.cisco.com> loaded cliconf plugin ansible_collections.cisco.nxos.plugins.cliconf.nxos from path /root/.ansible/collections/ansible_collections/cisco/nxos/plugins/cliconf/nxos.py for network_os cisco.nxos.nxos
+<sandbox-nxos-1.cisco.com> 
+<sandbox-nxos-1.cisco.com> local domain socket path is /root/.ansible/pc/a6c896fd54
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+ok: [sandbox-nxos-1.cisco.com] => {
+    "msg": "The inventory hostname is: sandbox-nxos-1.cisco.com"
+}
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+redirecting (type: action) cisco.nxos.nxos_config to cisco.nxos.nxos
+Loading collection ansible.netcommon from /root/.ansible/collections/ansible_collections/ansible/netcommon
+
+TASK [Backup current switch config (nxos)] **********************************************************************************
+task path: /workspaces/sot/playbooks/configure_device.yml:38
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: become) ansible.builtin.enable to ansible.netcommon.enable
+<sandbox-nxos-1.cisco.com> attempting to start connection
+<sandbox-nxos-1.cisco.com> using connection plugin ansible.netcommon.network_cli
+Found ansible-connection at path /opt/ansible210/bin/ansible-connection
+<sandbox-nxos-1.cisco.com> found existing local domain socket, using it!
+<sandbox-nxos-1.cisco.com> updating play_context for connection
+<sandbox-nxos-1.cisco.com> 
+<sandbox-nxos-1.cisco.com> local domain socket path is /root/.ansible/pc/a6c896fd54
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: action) cisco.nxos.nxos_config to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_config to cisco.nxos.nxos
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: disabled
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: module execution time may be extended
+<sandbox-nxos-1.cisco.com> ESTABLISH LOCAL CONNECTION FOR USER: root
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i `"&& mkdir "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801791.9622784-4714-269438575283284 `" && echo ansible-tmp-1628801791.9622784-4714-269438575283284="` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801791.9622784-4714-269438575283284 `" ) && sleep 0'
+Using module file /root/.ansible/collections/ansible_collections/cisco/nxos/plugins/modules/nxos_config.py
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmp8bu_f2e6 TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801791.9622784-4714-269438575283284/AnsiballZ_nxos_config.py
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801791.9622784-4714-269438575283284/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801791.9622784-4714-269438575283284/AnsiballZ_nxos_config.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '/opt/ansible210/bin/python /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801791.9622784-4714-269438575283284/AnsiballZ_nxos_config.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801791.9622784-4714-269438575283284/ > /dev/null 2>&1 && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i `"&& mkdir "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568 `" && echo ansible-tmp-1628801794.9236538-4714-219975815029568="` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568 `" ) && sleep 0'
+Using module file /opt/ansible210/lib/python3.8/site-packages/ansible/modules/stat.py
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmpjhf0bpgc TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/AnsiballZ_stat.py
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/AnsiballZ_stat.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '/opt/ansible210/bin/python /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/AnsiballZ_stat.py && sleep 0'
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmpmlj2a9w0 TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/source
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/source && sleep 0'
+Using module file /opt/ansible210/lib/python3.8/site-packages/ansible/modules/copy.py
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmpud1bp_k_ TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/AnsiballZ_copy.py
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/AnsiballZ_copy.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '/opt/ansible210/bin/python /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/AnsiballZ_copy.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801794.9236538-4714-219975815029568/ > /dev/null 2>&1 && sleep 0'
+changed: [sandbox-nxos-1.cisco.com] => {
+    "backup_path": "/workspaces/sot/playbooks/backup/sandbox-nxos-1.cisco.com_config.2021-08-12@20:56:34",
+    "changed": true,
+    "date": "2021-08-12",
+    "filename": "sandbox-nxos-1.cisco.com_config.2021-08-12@20:56:34",
+    "invocation": {
+        "module_args": {
+            "after": null,
+            "backup": true,
+            "backup_options": null,
+            "before": null,
+            "defaults": false,
+            "diff_against": null,
+            "diff_ignore_lines": null,
+            "intended_config": null,
+            "lines": null,
+            "match": "line",
+            "parents": null,
+            "provider": null,
+            "replace": "line",
+            "replace_src": null,
+            "running_config": null,
+            "save_when": "never",
+            "src": null
+        }
+    },
+    "shortname": "/workspaces/sot/playbooks/backup/sandbox-nxos-1.cisco.com_config",
+    "time": "20:56:34"
+}
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+redirecting (type: action) cisco.nxos.nxos_feature to cisco.nxos.nxos
+
+TASK [Configure features] ***************************************************************************************************
+task path: /workspaces/sot/playbooks/configure_device.yml:48
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: become) ansible.builtin.enable to ansible.netcommon.enable
+<sandbox-nxos-1.cisco.com> attempting to start connection
+<sandbox-nxos-1.cisco.com> using connection plugin ansible.netcommon.network_cli
+Found ansible-connection at path /opt/ansible210/bin/ansible-connection
+<sandbox-nxos-1.cisco.com> found existing local domain socket, using it!
+<sandbox-nxos-1.cisco.com> invoked shell using ssh_type: None
+<sandbox-nxos-1.cisco.com> ssh type is set to paramiko
+<sandbox-nxos-1.cisco.com> ssh connection done, setting terminal
+<sandbox-nxos-1.cisco.com> loaded terminal plugin for network_os cisco.nxos.nxos
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> firing event: on_become
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> firing event: on_open_shell()
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> ssh connection has completed successfully
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> updating play_context for connection
+<sandbox-nxos-1.cisco.com> 
+<sandbox-nxos-1.cisco.com> local domain socket path is /root/.ansible/pc/a6c896fd54
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: action) cisco.nxos.nxos_feature to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_feature to cisco.nxos.nxos
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: disabled
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: module execution time may be extended
+<sandbox-nxos-1.cisco.com> ESTABLISH LOCAL CONNECTION FOR USER: root
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i `"&& mkdir "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801796.0231738-4786-63519569478805 `" && echo ansible-tmp-1628801796.0231738-4786-63519569478805="` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801796.0231738-4786-63519569478805 `" ) && sleep 0'
+Using module file /root/.ansible/collections/ansible_collections/cisco/nxos/plugins/modules/nxos_feature.py
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmpirjw6kgs TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801796.0231738-4786-63519569478805/AnsiballZ_nxos_feature.py
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801796.0231738-4786-63519569478805/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801796.0231738-4786-63519569478805/AnsiballZ_nxos_feature.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '/opt/ansible210/bin/python /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801796.0231738-4786-63519569478805/AnsiballZ_nxos_feature.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801796.0231738-4786-63519569478805/ > /dev/null 2>&1 && sleep 0'
+ok: [sandbox-nxos-1.cisco.com] => (item={'feature': 'bgp', 'state': 'enabled'}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "commands": [],
+    "invocation": {
+        "module_args": {
+            "feature": "bgp",
+            "provider": null,
+            "state": "enabled"
+        }
+    },
+    "item": {
+        "feature": "bgp",
+        "state": "enabled"
+    }
+}
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: action) cisco.nxos.nxos_feature to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_feature to cisco.nxos.nxos
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: disabled
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: module execution time may be extended
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i `"&& mkdir "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.0259407-4786-101925944079496 `" && echo ansible-tmp-1628801797.0259407-4786-101925944079496="` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.0259407-4786-101925944079496 `" ) && sleep 0'
+Using module file /root/.ansible/collections/ansible_collections/cisco/nxos/plugins/modules/nxos_feature.py
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmp81p18eet TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.0259407-4786-101925944079496/AnsiballZ_nxos_feature.py
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.0259407-4786-101925944079496/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.0259407-4786-101925944079496/AnsiballZ_nxos_feature.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '/opt/ansible210/bin/python /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.0259407-4786-101925944079496/AnsiballZ_nxos_feature.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.0259407-4786-101925944079496/ > /dev/null 2>&1 && sleep 0'
+ok: [sandbox-nxos-1.cisco.com] => (item={'feature': 'interface-vlan', 'state': 'enabled'}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "commands": [],
+    "invocation": {
+        "module_args": {
+            "feature": "interface-vlan",
+            "provider": null,
+            "state": "enabled"
+        }
+    },
+    "item": {
+        "feature": "interface-vlan",
+        "state": "enabled"
+    }
+}
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: action) cisco.nxos.nxos_feature to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_feature to cisco.nxos.nxos
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: disabled
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: module execution time may be extended
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i `"&& mkdir "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.898488-4786-126582433387351 `" && echo ansible-tmp-1628801797.898488-4786-126582433387351="` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.898488-4786-126582433387351 `" ) && sleep 0'
+Using module file /root/.ansible/collections/ansible_collections/cisco/nxos/plugins/modules/nxos_feature.py
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmp0ea0yxxq TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.898488-4786-126582433387351/AnsiballZ_nxos_feature.py
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.898488-4786-126582433387351/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.898488-4786-126582433387351/AnsiballZ_nxos_feature.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '/opt/ansible210/bin/python /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.898488-4786-126582433387351/AnsiballZ_nxos_feature.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801797.898488-4786-126582433387351/ > /dev/null 2>&1 && sleep 0'
+ok: [sandbox-nxos-1.cisco.com] => (item={'feature': 'telemetry', 'state': 'enabled'}) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "commands": [],
+    "invocation": {
+        "module_args": {
+            "feature": "telemetry",
+            "provider": null,
+            "state": "enabled"
+        }
+    },
+    "item": {
+        "feature": "telemetry",
+        "state": "enabled"
+    }
+}
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+redirecting (type: action) cisco.nxos.nxos_config to cisco.nxos.nxos
+
+TASK [Configure the switch similar to using CLI commands] *******************************************************************
+task path: /workspaces/sot/playbooks/configure_device.yml:55
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: become) ansible.builtin.enable to ansible.netcommon.enable
+<sandbox-nxos-1.cisco.com> attempting to start connection
+<sandbox-nxos-1.cisco.com> using connection plugin ansible.netcommon.network_cli
+Found ansible-connection at path /opt/ansible210/bin/ansible-connection
+<sandbox-nxos-1.cisco.com> found existing local domain socket, using it!
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> updating play_context for connection
+<sandbox-nxos-1.cisco.com> 
+<sandbox-nxos-1.cisco.com> local domain socket path is /root/.ansible/pc/a6c896fd54
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: action) cisco.nxos.nxos_config to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_config to cisco.nxos.nxos
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: disabled
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: module execution time may be extended
+<sandbox-nxos-1.cisco.com> ESTABLISH LOCAL CONNECTION FOR USER: root
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i `"&& mkdir "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801799.23003-4862-78895601702558 `" && echo ansible-tmp-1628801799.23003-4862-78895601702558="` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801799.23003-4862-78895601702558 `" ) && sleep 0'
+Using module file /root/.ansible/collections/ansible_collections/cisco/nxos/plugins/modules/nxos_config.py
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmpjk8c1h7i TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801799.23003-4862-78895601702558/AnsiballZ_nxos_config.py
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801799.23003-4862-78895601702558/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801799.23003-4862-78895601702558/AnsiballZ_nxos_config.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '/opt/ansible210/bin/python /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801799.23003-4862-78895601702558/AnsiballZ_nxos_config.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801799.23003-4862-78895601702558/ > /dev/null 2>&1 && sleep 0'
+ok: [sandbox-nxos-1.cisco.com] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "after": null,
+            "backup": false,
+            "backup_options": null,
+            "before": null,
+            "defaults": false,
+            "diff_against": null,
+            "diff_ignore_lines": null,
+            "intended_config": null,
+            "lines": [
+                "feature lldp"
+            ],
+            "match": "line",
+            "parents": null,
+            "provider": null,
+            "replace": "line",
+            "replace_src": null,
+            "running_config": null,
+            "save_when": "never",
+            "src": null
+        }
+    }
+}
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+redirecting (type: action) cisco.nxos.nxos_system to cisco.nxos.nxos
+
+TASK [Configure name servers] ***********************************************************************************************
+task path: /workspaces/sot/playbooks/configure_device.yml:61
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: become) ansible.builtin.enable to ansible.netcommon.enable
+<sandbox-nxos-1.cisco.com> attempting to start connection
+<sandbox-nxos-1.cisco.com> using connection plugin ansible.netcommon.network_cli
+Found ansible-connection at path /opt/ansible210/bin/ansible-connection
+<sandbox-nxos-1.cisco.com> found existing local domain socket, using it!
+<sandbox-nxos-1.cisco.com> Response received, triggered 'persistent_buffer_read_timeout' timer of 0.1 seconds
+<sandbox-nxos-1.cisco.com> updating play_context for connection
+<sandbox-nxos-1.cisco.com> 
+<sandbox-nxos-1.cisco.com> local domain socket path is /root/.ansible/pc/a6c896fd54
+Trying secret <ansible.parsing.vault.PromptVaultSecret object at 0x7f9c7c0c2fa0> for vault_id=default
+redirecting (type: action) cisco.nxos.nxos_system to cisco.nxos.nxos
+redirecting (type: action) cisco.nxos.nxos_system to cisco.nxos.nxos
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: disabled
+<sandbox-nxos-1.cisco.com> ANSIBLE_NETWORK_IMPORT_MODULES: module execution time may be extended
+<sandbox-nxos-1.cisco.com> ESTABLISH LOCAL CONNECTION FOR USER: root
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i `"&& mkdir "` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801800.5051734-4893-143523535342122 `" && echo ansible-tmp-1628801800.5051734-4893-143523535342122="` echo /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801800.5051734-4893-143523535342122 `" ) && sleep 0'
+Using module file /root/.ansible/collections/ansible_collections/cisco/nxos/plugins/modules/nxos_system.py
+<sandbox-nxos-1.cisco.com> PUT /root/.ansible/tmp/ansible-local-46924hlldm_i/tmp51apmqiu TO /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801800.5051734-4893-143523535342122/AnsiballZ_nxos_system.py
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801800.5051734-4893-143523535342122/ /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801800.5051734-4893-143523535342122/AnsiballZ_nxos_system.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c '/opt/ansible210/bin/python /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801800.5051734-4893-143523535342122/AnsiballZ_nxos_system.py && sleep 0'
+<sandbox-nxos-1.cisco.com> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-local-46924hlldm_i/ansible-tmp-1628801800.5051734-4893-143523535342122/ > /dev/null 2>&1 && sleep 0'
+ok: [sandbox-nxos-1.cisco.com] => {
+    "changed": false,
+    "commands": [],
+    "invocation": {
+        "module_args": {
+            "domain_lookup": null,
+            "domain_name": null,
+            "domain_search": null,
+            "hostname": null,
+            "name_servers": [
+                {
+                    "server": "208.67.222.222",
+                    "vrf": "management"
+                },
+                {
+                    "server": "208.67.220.220",
+                    "vrf": "management"
+                }
+            ],
+            "provider": null,
+            "state": "present",
+            "system_mtu": null
+        }
+    }
+}
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+META: ran handlers
+Read vars_file '{{ playbook_dir }}/files/globals.yml'
+Read vars_file '{{ playbook_dir }}/files/framework.yml'
+META: ran handlers
+
+PLAY RECAP ******************************************************************************************************************
+sandbox-nxos-1.cisco.com   : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+root@078cb3a0ef9c:/workspaces/sot/playbooks# 

@@ -1,0 +1,40 @@
+---
+#
+# inventory_httpapi.yml
+#
+#  export ANSIBLE_INVENTORY=/workspaces/401_errors/playbooks/files/inventory_httpapi.yml
+#
+#  To list the HTTPAPI plugins `ansible-doc -t httpapi -l`
+#
+#  https://docs.ansible.com/ansible/latest/network/user_guide/platform_nxos.html
+#  
+#  https://docs.ansible.com/ansible/latest/collections/ansible/netcommon/httpapi_connection.html
+#
+all:
+  children:
+    sbx_n9kv:
+      hosts:
+        # NXOS: version 9.3(3)
+        sandbox-nxos-1.cisco.com:
+            ansible_user: admin
+            ansible_password: Admin_1234!
+
+        # Specify by IP address
+        # sandbox-nxos-1.cisco.com. 1800	IN	A	131.226.217.151
+        131.226.217.151:
+            ansible_user: admin
+            ansible_password: !vault |
+                $ANSIBLE_VAULT;1.1;AES256
+                31346163346237636461653331626330623230633164356665353066663165633165306537616462
+                6636666433386632303733333833643565356137363262340a333231303165366538383030313634
+                30383162646261333233303064636130356435373035623236303536393633373865616439396261
+                3335336335343661350a366631376337363663373235363638626539383638326663373839373338
+                6465
+      vars:
+
+        ansible_connection: ansible.netcommon.network_cli
+        ansible_become: yes
+        ansible_become_method: enable
+        ansible_host_key_checking: False
+        ansible_network_os: cisco.nxos.nxos
+        ansible_python_interpreter: /opt/ansible210/bin/python

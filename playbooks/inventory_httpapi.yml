@@ -15,6 +15,7 @@ all:
     sbx_n9kv:
       hosts:
         chip-nexus-tr.sandbox.wwtatc.local: {}
+        sandbox-nxos-1.cisco.com: {}
 
       vars:
         ansible_connection: ansible.netcommon.httpapi

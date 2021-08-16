@@ -19,8 +19,8 @@
 
   vars: 
     state: present
-    first_interface: 63
-    last_interface: 64
+    first_interface: 61
+    last_interface: 62
 
     nxos:
       mtu: 9216
@@ -33,9 +33,21 @@
         interfaces:
           - name: 'Ethernet1/60'
             description: UPLINK
-            address: 192.0.2.1/31
+            address: 192.0.2.17/31
 
   tasks:
+    - name: debug credentials
+      debug:
+        msg: '{{ ansible_user }}::{{ ansible_password }}::{{ ansible_connection }}'
+      tags: ['cli']
+
+    - name: Configure the switch similar to using CLI commands
+      cisco.nxos.nxos_config:
+        lines:
+          - 'default interface Ethernet1/{{ first_interface }}'
+      tags: ['cli']
+      ignore_errors: true
+      
     - name: Layer 2
       block:
         - name: Configure Layer 2 interfaces
