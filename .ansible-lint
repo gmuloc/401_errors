@@ -3,7 +3,7 @@
 #
 warn_list:  # or 'skip_list' to silence them completely
   - internal-error  # Unexpected internal error
-  - yaml
+#    - yaml
 
 command-shell:  # Specific to use of command and shell modules
   - command-instead-of-module

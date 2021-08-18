@@ -8,16 +8,16 @@
 #
 #      description: Test comparing httpapi vs network_cli connection methods
 #
-#      usage:  
+#      usage:
 #
 #        ./configure_device_interfaces.yml  -i files/inventory_network_cli.yml --ask-vault-password
 #
-- name: configure device interfaces 
+- name: configure device interfaces
   connection: local
   hosts: sbx_n9kv
-  gather_facts: false
+  gather_facts: False
 
-  vars: 
+  vars:
     state: present
     first_interface: 61
     last_interface: 62
