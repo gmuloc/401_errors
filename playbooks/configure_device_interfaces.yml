@@ -15,7 +15,7 @@
 - name: configure device interfaces
   connection: local
   hosts: sbx_n9kv
-  gather_facts: False
+  gather_facts: false
 
   vars:
     state: present
@@ -47,7 +47,7 @@
           - 'default interface Ethernet1/{{ first_interface }}'
       tags: ['cli']
       ignore_errors: true
-      
+
     - name: Layer 2
       block:
         - name: Configure Layer 2 interfaces
@@ -70,7 +70,7 @@
       tags: ['l2_interface']
 
     - name: Layer 3
-      block: 
+      block:
         - name: Configure interface as Layer 3
           cisco.nxos.nxos_interfaces:
             config:
@@ -86,6 +86,7 @@
             config:
               - name: '{{ item.name }}'
                 ipv4:
-                - address: '{{ item.address }}'
+                  - address: '{{ item.address }}'
           loop: '{{ nxos.l3.interfaces }}'
-      tags: ['l3_interface']  
+      tags: ['l3_interface']
+      
