@@ -89,4 +89,3 @@
                   - address: '{{ item.address }}'
           loop: '{{ nxos.l3.interfaces }}'
       tags: ['l3_interface']
-      
