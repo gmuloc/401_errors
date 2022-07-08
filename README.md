@@ -14,6 +14,21 @@ The playbook `configure_device_interfaces.yml` is executed twice, once using the
 
 Note the HTTP Error 401 is observed when using HTTPAPI, but not when using Network CLI. In both cases the clear-text password is successfully authenticated.
 
+## Edit by @gmuloc
+
+* The password for the vault variables is `password`
+* It is possible that the sandbox will be misbehaving from nxapi point of view (
+    Bad Gatewat 502) If so it is possible to restart the API using:
+
+    ```
+    conf t
+    # Disable the feature
+    no feature nxapi
+    # Re enable the feature. it will enable it on port 443
+    feature nxapi
+    ```
+
+
 Using `ansible_connection: ansible.netcommon.httpapi`
 -----------------------------------------------------
 
