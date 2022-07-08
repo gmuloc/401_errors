@@ -28,6 +28,31 @@ Note the HTTP Error 401 is observed when using HTTPAPI, but not when using Netwo
     feature nxapi
     ```
 
+* To observe with wireshark the payload sent, disable ssl in `
+    playbooks/inventory_sbx_n9kv_httpapi.yml `(the playbook will
+    fail but packet capture will show the issue)
+
+    The packet sent to connect when using vault encrypted password looks like:
+
+    ```
+     POST /ins HTTP/1.1
+     Accept-Encoding: identity
+     Content-Length: 150
+     Host: 131.226.217.151:80
+     User-Agent: Python-urllib/3.10
+     Content-Type: application/json
+     Authorization: Basic
+     YWRtaW46eydfX2Fuc2libGVfdmF1bHQnOiAnJEFOU0lCTEVfVkFVTFQ7MS4xO0FFUzI1NlxuMzczNTMxNjU2NjMyMzY2NDYxMzA2MjY0MzMzMTMyMzMzMDY2Mzk2NDM0MzUzMjMwMzMzMjM4MzIzODM0MzczODM2MzUzODM1MzYzNzYyNjRcbjM0NjQ2MTM4NjMzODMyNjEzNzM1NjI2NDM1MzY2MzM0NjM2MzMwMzgzNzMwNjY2MzBhMzIzNTMyNjM2NjM4NjEzNTMyMzQzMTMyMzUzMTMwXG4zMjM1MzY2MTMzMzYzMTMyNjMzMjYxMzkzMDY2MzA2MzM5NjMzNzMwMzU2MTY2MzgzNTYzNjQ2NDM2Mzg2MjYyMzQzMTMyNjMzMzYzMzc2NFxuNjMzOTM2MzQ2MjMxMzkzMzYxMGEzNjM4MzQzODY1MzMzNDMwMzYzMTY1NjM2NDMzMzYzNDMwMzY2MzY1NjYzMTY0MzMzNDM5NjEzMTYzNjNcbjY2MzZcbid9
+     Connection: close
+
+     ```
+
+     The Authorization will be deciphered as:
+     ```
+     admin:{'__ansible_vault':
+     '$ANSIBLE_VAULT;1.1;AES256\n37353165663236646130626433313233306639643435323033323832383437383635383536376264\n3464613863383261373562643536633463633038373066630a323532636638613532343132353130\n32353661333631326332613930663063396337303561663835636464363862623431326333633764\n6339363462313933610a363834386533343036316563643336343036636566316433343961316363\n6636\n'}%
+     ```
+
 
 Using `ansible_connection: ansible.netcommon.httpapi`
 -----------------------------------------------------
